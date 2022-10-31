@@ -38,14 +38,14 @@ type
   private
     Fcapacity : integer;
     FhowDoesCartFilled : integer;
-    FisCartFilled: boolean;
+    FisItAdded: boolean;
   protected
     procedure Filling;
   public
     constructor Create(fCap: integer);
     property Filled : integer read FhowDoesCartFilled write FhowDoesCartFilled;
     property Weight : integer read Fcapacity;
-    property IsCartFilled: boolean read FisCartFilled;
+    property isItAdded: boolean read FisItAdded;
   end;
 
 var
@@ -60,18 +60,19 @@ procedure TForm1.onStartClick(Sender: TObject);
 begin
   var i : integer;
   var percentage : integer;
-  if (nmbOfMignon.Text<>'') then
+  Form1.Memo1.lines.Clear;
+  if (nmbOfMignon.Text<>'') and (nmbOfMignon.Text<>'0') and (StrToInt(nmbOfMignon.Text)>0) then
       FnumberOfMignons := StrToInt(nmbOfMignon.Text)
   else
     begin
-      ShowMessage('The field for number of bananas is empty.');
+      ShowMessage('number of bananas is empty.');
       exit;
     end;
-  if (capacityWeight.Text<>'') then
+  if (capacityWeight.Text<>'') and (capacityWeight.Text<>'0') and (StrToInt(capacityWeight.Text)>0) then
       Cart := Tcart.Create(StrToInt(capacityWeight.Text))
   else
     begin
-      ShowMessage('The field for Capacity is empty.');
+      ShowMessage('Capacity is empty.');
       exit
     end;
   var MignonShopp:TMignonShopping;
@@ -92,24 +93,21 @@ end;
 
 procedure TMignonShopping.FillTheCart;
 begin
-var i:integer;
-var SpeedOfBuing:integer;
-//var GoodsTakenByMignon: integer;
 randomize();
 Synchronize(GetNumber);
 while Cart.Filled<Cart.Weight do
   begin
     Synchronize(Cart.Filling);
-    if Cart.IsCartFilled = false then
-      FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
-    Sleep(1000 - random(100)*10);
-    Synchronize(WriteRes);
+    if Cart.isItAdded = true then
+      begin
+            Sleep(1000 - random(100)*10);
+            FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
+            Synchronize(WriteRes);
+      end;
   end;
 self.Terminate;
 self:= nil;
 end;
-
-
 procedure TMignonShopping.GetNumber;
 begin
   Form1.Memo1.Lines.Add(' ');
@@ -126,7 +124,7 @@ constructor Tcart.Create(fCap: integer);
 begin
   Fcapacity :=fCap;
   FhowDoesCartFilled :=0;
-  FisCartFilled := false;
+  FisItAdded := false;
 end;
 
 procedure Tcart.Filling;
@@ -136,10 +134,10 @@ begin
   begin
     FhowDoesCartFilled:= FhowDoesCartFilled + 1;
     Form1.cartProgressBar.position:= (FhowDoesCartFilled*100)div Fcapacity;
-    FisCartFilled:= false;
+    FisItAdded:= true;
   end
   else
-    FisCartFilled:= true;
+    FisItAdded:= false;
 end;
 
 end.
