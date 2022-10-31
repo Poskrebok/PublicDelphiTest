@@ -26,7 +26,7 @@ type
     procedure FillTheCart;
   private
     FgoodsTakenByMignon: integer;
-    ThreadNumber: integer;
+    FThreadNumber: integer;
     { Private declarations }
   protected
     procedure PickOneStuff;
@@ -89,7 +89,7 @@ end;
 procedure TMignonShopping.Execute;
 begin
   NumberOfThreads:=NumberOfThreads+1;
-  ThreadNumber:=NumberOfThreads;
+  FThreadNumber:=NumberOfThreads;
   FillTheCart;
 end;
 
@@ -113,7 +113,7 @@ begin
       begin
         FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
       end;
-    Form1.Memo.Lines[ThreadNumber]:='Mignon No '+IntToStr(ThreadNumber)+' took goods =  '+IntToStr(FgoodsTakenByMignon);
+    Form1.Memo.Lines[FThreadNumber]:='Mignon No '+IntToStr(FThreadNumber)+' took goods =  '+IntToStr(FgoodsTakenByMignon);
 end;
 
 { Tcart }
