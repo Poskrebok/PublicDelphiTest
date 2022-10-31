@@ -1,0 +1,16 @@
+﻿[nmbOfMignon]
+Coordinates=203,10,84,51
+
+[]
+Coordinates=10,10,84,105
+
+[cartProgressBar]
+Coordinates=80,144,81,51
+
+[capacityWeight]
+Coordinates=121,10,64,51
+
+[onStart]
+Coordinates=10,144,53,51
+Visible=True
+

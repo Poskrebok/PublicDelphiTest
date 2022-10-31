@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.280,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit1.pas=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.238,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Project1.dproj=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.500,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit2.pas=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.241,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.618,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.280,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit1.dfm=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.263,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit2.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.110,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.489,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.087,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.216,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.129,=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit3.pas</Transaction>
+    <Transaction>2022.10.31 11:56:36.791,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Main.dfm=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit1.dfm</Transaction>
+    <Transaction>2022.10.31 11:56:36.791,C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Main.pas=C:\Users\Poskrebok\Documents\Embarcadero\Studio\Projects\TESTproj\Unit1.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Main.pas"/>
+    <File Path="Main.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
