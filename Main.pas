@@ -95,17 +95,18 @@ end;
 
 procedure TMignonShopping.FillTheCart;
 begin
-randomize();
-FgoodsTakenByMignon:= 0;
-Form1.Memo.Lines.Add('');
-while Cart.Filled<Cart.Weight do
-  begin
-    Synchronize(PickOneStuff);
-    Sleep(1000 - random(10)*10);
-  end;
-self.Terminate;
-self:= nil;
+  randomize();
+  FgoodsTakenByMignon:= 0;
+  Form1.Memo.Lines.Add('');
+  while Cart.Filled<Cart.Weight do
+    begin
+      Synchronize(PickOneStuff);
+      Sleep(1000 - random(10)*10);
+    end;
+  self.Terminate;
+  self:= nil;
 end;
+
 procedure TMignonShopping.PickOneStuff;
 begin
     Cart.Filling;
