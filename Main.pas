@@ -101,7 +101,7 @@ begin
   while Cart.Filled<Cart.Weight do
     begin
       Synchronize(PickOneStuff);
-      Sleep(1000 - random(10)*10);
+      Sleep(1000 - random(100)*10);
     end;
   self.Terminate;
   self:= nil;
@@ -109,11 +109,11 @@ end;
 
 procedure TMignonShopping.PickOneStuff;
 begin
-    Cart.Filling;
-    if Cart.isItAdded = true then
-      begin
-        FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
-      end;
+    if Cart.Filled<Cart.Weight then
+    begin
+      Cart.Filling;
+      FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
+    end;
     Form1.Memo.Lines[FThreadNumber]:='Mignon No '+IntToStr(FThreadNumber)+' took goods =  '+IntToStr(FgoodsTakenByMignon);
 end;
 
@@ -129,14 +129,8 @@ end;
 procedure Tcart.Filling;
 begin
   var LineNumberMemo: integer;
-  if FhowDoesCartFilled<Fcapacity then
-  begin
-    FhowDoesCartFilled:= FhowDoesCartFilled + 1;
-    Form1.cartProgressBar.position:= (FhowDoesCartFilled*100)div Fcapacity;
-    FisItAdded:= true;
-  end
-  else
-    FisItAdded:= false;
+  FhowDoesCartFilled:= FhowDoesCartFilled + 1;
+  Form1.cartProgressBar.position:= (FhowDoesCartFilled*100)div Fcapacity;
 end;
 
 end.

@@ -51,7 +51,7 @@ object Form1: TForm1
     TabOrder = 3
     ExplicitWidth = 573
   end
-  object Memo1: TDBMemo
+  object Memo: TDBMemo
     Left = 368
     Top = 24
     Width = 225
