@@ -60,7 +60,7 @@ begin
   var i : integer;
   var percentage : integer;
   Form1.Memo.lines.Clear;
-  TN:=0;
+  NumberOfThreads:=0;
   if (nmbOfMignon.Text<>'') and (nmbOfMignon.Text<>'0') and (StrToInt(nmbOfMignon.Text)>0) then
       FnumberOfMignons := StrToInt(nmbOfMignon.Text)
   else
