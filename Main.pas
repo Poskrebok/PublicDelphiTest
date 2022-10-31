@@ -13,7 +13,7 @@ type
     onStart: TButton;
     capacityWeight: TEdit;
     cartProgressBar: TProgressBar;
-    Memo1: TDBMemo;
+    Memo: TDBMemo;
     procedure onStartClick(Sender: TObject);
   private
     FnumberOfMignons : integer;
@@ -25,12 +25,11 @@ type
   public
     procedure FillTheCart;
   private
-    FthreadNum: integer;
     FgoodsTakenByMignon: integer;
+    ThreadNumber: integer;
     { Private declarations }
   protected
-    procedure WriteRes;
-    procedure GetNumber;
+    procedure PickOneStuff;
     procedure Execute; override;
   end;
 
@@ -51,7 +50,7 @@ type
 var
   Form1: TForm1;
   Cart: Tcart;
-
+  NumberOfThreads: integer;
 implementation
 
 {$R *.dfm}
@@ -60,7 +59,8 @@ procedure TForm1.onStartClick(Sender: TObject);
 begin
   var i : integer;
   var percentage : integer;
-  Form1.Memo1.lines.Clear;
+  Form1.Memo.lines.Clear;
+  TN:=0;
   if (nmbOfMignon.Text<>'') and (nmbOfMignon.Text<>'0') and (StrToInt(nmbOfMignon.Text)>0) then
       FnumberOfMignons := StrToInt(nmbOfMignon.Text)
   else
@@ -88,34 +88,32 @@ end;
 
 procedure TMignonShopping.Execute;
 begin
-  FillTheCart
+  NumberOfThreads:=NumberOfThreads+1;
+  ThreadNumber:=NumberOfThreads;
+  FillTheCart;
 end;
 
 procedure TMignonShopping.FillTheCart;
 begin
 randomize();
-Synchronize(GetNumber);
+FgoodsTakenByMignon:= 0;
+Form1.Memo.Lines.Add('');
 while Cart.Filled<Cart.Weight do
   begin
-    Synchronize(Cart.Filling);
-    if Cart.isItAdded = true then
-      begin
-            Sleep(1000 - random(100)*10);
-            FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
-            Synchronize(WriteRes);
-      end;
+    Synchronize(PickOneStuff);
+    Sleep(1000 - random(100)*10);
   end;
 self.Terminate;
 self:= nil;
 end;
-procedure TMignonShopping.GetNumber;
+procedure TMignonShopping.PickOneStuff;
 begin
-  Form1.Memo1.Lines.Add(' ');
-  FthreadNum:=Form1.Memo1.Lines.Count;
-end;
-procedure TMignonShopping.WriteRes;
-begin
-  Form1.Memo1.Lines[FthreadNum]:='Mignon No '+IntToStr(FthreadNum)+' took goods =  '+IntToStr(FgoodsTakenByMignon);
+    Cart.Filling;
+    if Cart.isItAdded = true then
+      begin
+        FgoodsTakenByMignon:=FgoodsTakenByMignon+1;
+      end;
+    Form1.Memo.Lines[ThreadNumber]:='Mignon No '+IntToStr(ThreadNumber)+' took goods =  '+IntToStr(FgoodsTakenByMignon);
 end;
 
 { Tcart }
